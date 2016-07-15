@@ -1,0 +1,15 @@
+site_name: JJSoftPlatform
+site_url: http://jjsoft.com.ar
+site_description: Project documentation with Markdown.
+site_author: JJSoft Team
+
+repo_url: https://github.com/jjsoft-ar
+
+pages:
+- index.md
+- install.md
+- modules.md
+- license.md
+- changelog.md
+
+theme: readthedocs
