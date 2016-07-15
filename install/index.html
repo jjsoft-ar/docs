@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="JJSoft Team">
+  
+  <title>Install - JJSoftPlatform</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Install";
+    var mkdocs_page_input_path = "install.md";
+    var mkdocs_page_url = "/install/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> JJSoftPlatform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Install</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#jjsoft-asgardcms">JJSoft - AsgardCMS</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#todo-how-to">TODO - HOW TO</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#install">Install</a></li>
+                
+                    <li><a class="toctree-l4" href="#get-asgardcms">Get AsgardCMS</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-a-default-database">Create a default database</a></li>
+                
+                    <li><a class="toctree-l4" href="#install-plattform">Install plattform</a></li>
+                
+                    <li><a class="toctree-l4" href="#config-secondary-database">Config secondary database</a></li>
+                
+            
+                <li class="toctree-l3"><a href="#install-notification-module">Install Notification-module</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../modules/">Modules</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../license/">License</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../changelog/">Changelog</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">JJSoftPlatform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Install</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/jjsoft-ar" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h2 id="jjsoft-asgardcms">JJSoft - AsgardCMS</h2>
+<h2 id="todo-how-to">TODO - HOW TO</h2>
+<h2 id="install">Install</h2>
+<h3 id="get-asgardcms">Get AsgardCMS</h3>
+<pre><code class="bash">$ composer create-project asgardcms/platform project-name
+</code></pre>
+
+<h3 id="create-a-default-database">Create a default database</h3>
+<p>crear la base primaria, la que maneja el acl, blog y frontend</p>
+<pre><code class="mysql">mysql&gt; create database bs_jjsoft;
+</code></pre>
+
+<h3 id="install-plattform">Install plattform</h3>
+<pre><code class="bash">$ php artisan asgard:install
+</code></pre>
+
+<h3 id="config-secondary-database">Config secondary database</h3>
+<p>Actualizar el archivo <code>config/database.php</code> dentro del array connections</p>
+<pre><code class="php">    'connections' =&gt; [
+...
+        'bs_siges' =&gt; [
+            'driver'    =&gt; 'mysql',
+            'host'      =&gt; env('BS_SIGES_HOST', 'localhost'),
+            'database'  =&gt; env('BS_SIGES_DATABASE', 'forge'),
+            'username'  =&gt; env('BS_SIGES_USERNAME', 'forge'),
+            'password'  =&gt; env('BS_SIGES_PASSWORD', ''),
+            'charset'   =&gt; 'utf8',
+            'collation' =&gt; 'utf8_unicode_ci',
+            'prefix'    =&gt; '',
+            'strict'    =&gt; false,
+        ],
+
+...
+    ],
+</code></pre>
+
+<p>Luego actualizar el <code>.env</code> agregando las siguientes lineas</p>
+<pre><code class="bash">BS_SIGES_HOST=localhost
+BS_SIGES_DATABASE=bs_siges
+BS_SIGES_USERNAME=root
+BS_SIGES_PASSWORD=root
+</code></pre>
+
+<h2 id="install-notification-module">Install Notification-module</h2>
+<pre><code class="bash">$ composer require asgardcms/notification-module
+$ php artisan module:publish notification
+$ php artisan module:migrate notificacion
+</code></pre>
+
+<p>Si surge el error de memoria swap</p>
+<pre><code class="bash">$ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024
+$ sudo /sbin/mkswap /var/swap.1
+$ sudo /sbin/swapon /var/swap.1
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../modules/" class="btn btn-neutral float-right" title="Modules">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/jjsoft-ar" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../modules/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to JJSoft Platform\n\n\nJJSoft Platform use at base AsgardCMS and own modules. And this is a documentation for initial installation to develop a modules and else.\n\n\nFun code!",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-jjsoft-platform",
+            "text": "JJSoft Platform use at base AsgardCMS and own modules. And this is a documentation for initial installation to develop a modules and else.  Fun code!",
+            "title": "Welcome to JJSoft Platform"
+        },
+        {
+            "location": "/install/",
+            "text": "JJSoft - AsgardCMS\n\n\nTODO - HOW TO\n\n\nInstall\n\n\nGet AsgardCMS\n\n\n$ composer create-project asgardcms/platform project-name\n\n\n\n\nCreate a default database\n\n\ncrear la base primaria, la que maneja el acl, blog y frontend\n\n\nmysql\n create database bs_jjsoft;\n\n\n\n\nInstall plattform\n\n\n$ php artisan asgard:install\n\n\n\n\nConfig secondary database\n\n\nActualizar el archivo \nconfig/database.php\n dentro del array connections\n\n\n    'connections' =\n [\n...\n        'bs_siges' =\n [\n            'driver'    =\n 'mysql',\n            'host'      =\n env('BS_SIGES_HOST', 'localhost'),\n            'database'  =\n env('BS_SIGES_DATABASE', 'forge'),\n            'username'  =\n env('BS_SIGES_USERNAME', 'forge'),\n            'password'  =\n env('BS_SIGES_PASSWORD', ''),\n            'charset'   =\n 'utf8',\n            'collation' =\n 'utf8_unicode_ci',\n            'prefix'    =\n '',\n            'strict'    =\n false,\n        ],\n\n...\n    ],\n\n\n\n\nLuego actualizar el \n.env\n agregando las siguientes lineas\n\n\nBS_SIGES_HOST=localhost\nBS_SIGES_DATABASE=bs_siges\nBS_SIGES_USERNAME=root\nBS_SIGES_PASSWORD=root\n\n\n\n\nInstall Notification-module\n\n\n$ composer require asgardcms/notification-module\n$ php artisan module:publish notification\n$ php artisan module:migrate notificacion\n\n\n\n\nSi surge el error de memoria swap\n\n\n$ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024\n$ sudo /sbin/mkswap /var/swap.1\n$ sudo /sbin/swapon /var/swap.1",
+            "title": "Install"
+        },
+        {
+            "location": "/install/#jjsoft-asgardcms",
+            "text": "",
+            "title": "JJSoft - AsgardCMS"
+        },
+        {
+            "location": "/install/#todo-how-to",
+            "text": "",
+            "title": "TODO - HOW TO"
+        },
+        {
+            "location": "/install/#install",
+            "text": "",
+            "title": "Install"
+        },
+        {
+            "location": "/install/#get-asgardcms",
+            "text": "$ composer create-project asgardcms/platform project-name",
+            "title": "Get AsgardCMS"
+        },
+        {
+            "location": "/install/#create-a-default-database",
+            "text": "crear la base primaria, la que maneja el acl, blog y frontend  mysql  create database bs_jjsoft;",
+            "title": "Create a default database"
+        },
+        {
+            "location": "/install/#install-plattform",
+            "text": "$ php artisan asgard:install",
+            "title": "Install plattform"
+        },
+        {
+            "location": "/install/#config-secondary-database",
+            "text": "Actualizar el archivo  config/database.php  dentro del array connections      'connections' =  [\n...\n        'bs_siges' =  [\n            'driver'    =  'mysql',\n            'host'      =  env('BS_SIGES_HOST', 'localhost'),\n            'database'  =  env('BS_SIGES_DATABASE', 'forge'),\n            'username'  =  env('BS_SIGES_USERNAME', 'forge'),\n            'password'  =  env('BS_SIGES_PASSWORD', ''),\n            'charset'   =  'utf8',\n            'collation' =  'utf8_unicode_ci',\n            'prefix'    =  '',\n            'strict'    =  false,\n        ],\n\n...\n    ],  Luego actualizar el  .env  agregando las siguientes lineas  BS_SIGES_HOST=localhost\nBS_SIGES_DATABASE=bs_siges\nBS_SIGES_USERNAME=root\nBS_SIGES_PASSWORD=root",
+            "title": "Config secondary database"
+        },
+        {
+            "location": "/install/#install-notification-module",
+            "text": "$ composer require asgardcms/notification-module\n$ php artisan module:publish notification\n$ php artisan module:migrate notificacion  Si surge el error de memoria swap  $ sudo /bin/dd if=/dev/zero of=/var/swap.1 bs=1M count=1024\n$ sudo /sbin/mkswap /var/swap.1\n$ sudo /sbin/swapon /var/swap.1",
+            "title": "Install Notification-module"
+        },
+        {
+            "location": "/modules/",
+            "text": "Modules\n\n\nCreate new module\n\n\nScaffold\n\n\n$ php artisan asgard:module:scaffold\n\n\n\n\nYou will be asked the following questions:\n* What is the module name ?\n\n\nThis is in the following format \njjsoft-ar/yourmodulename\n all lowercase. Do not use dashes in the module name\n\n\n\n\nDo you wish to use Doctrine or Eloquent ?\n\n\n\n\nThis is to know what kind of Entities to generate. Use \nEloquent\n\n\n\n\nEnter your desired entities\n\n\n\n\nYou can enter as many as you like, when you're done leave empty and the next question will come up.\n\n\n\n\nEnter you desired value objects\n\n\n\n\nAgain, you can enter as many as you like, when you're done leave empty.\n\n\nBefore seeing the newly created module on the \nadmin dashboard\n you will have to give you access to the new module. Go the the \nUser \n Roles\n view and edit the Admin role to give you permission to the new module.\n\n\nGIT\n\n\nThe last step required is to add you module in the \nModules/.gitignore\n file as following:\n\n\n!YourModuleName\n\n\n\n\nThis will tell git to ignore everything in the Modules folder except for your modules.\n\n\nENTITIES (MODELS)\n\n\nCreate Migration:\n\n\n$ php artisan module:make-migration \nModel\n \nYourModuleName\n\n\n\n\n\nGoing to \nModules/\n:YourModuleName\n/Database/Migrations\n and edit de migrations files\n\n\nCreate Model (Entitie):\n\n\n$ php artisan module:make-model \nModel\n \nYourModuleName\n\n\n\n\n\nSecondary DB definition\n\n\nTo use secondary database on model open de model class \nModules/\nYourModuleName\n/Entities/\nNewEntitie\n.php\n, and add this:\n\n\nclass \nNewEntitie\n extends Model\n{\n    protected $connection = 'bs_siges';\n    public $timestamps = false;\n\n\n\n\nFillable definition\n\n\nComplete \n$fillable\n array with all fields that you want to fill on a form:\n\n\n  protected $fillable = [\n      '\nfield1\n',\n      ...\n      '\nfieldN'\n\n  ];\n\n\n\n\nValidation definition\n\n\nTo are functionality of form validation add this array:\n\n\n  /**\n   * Validation rules\n   *\n   * @var array\n   */\n  public static $rules = [\n      'id_banco' =\n 'required',\n      'nombre' =\n 'required'\n  ];\n\n\n\n\nCast definition\n\n\nYou cast attributes in Eloquent by adding a protected \n$casts\n array to your model.\n\n\n  /**\n   * The attributes that should be casted to native types.\n   *\n   * @var array\n   */\n  protected $casts = [\n      'id_banco' =\n 'integer',\n      'nombre' =\n 'string',\n      'is_admin' =\n 'boolean',\n  ];\n\n\n\n\nCONTROLLERS\n\n\nCreate Controller:\n\n\nIf you need to create a controller without scaffold\n\n\n$ php artisan module:make-controller \nModel\nController \nYourModuleName\n\n\n\n\n\nIf you use secundary database \nbs_siges\n then to work propietly you need edit \n\n\n/Modules/Core/Repositories/Eloquent/EloquentBaseRepository.php\n\n\nSearch each occurrence of \n-\norderBy('created_at', 'DESC')\n and delete, to work fine. Because this database doesn't work to timestamp.\n\n\nCreate Request\n\n\nTo add functionalytie at form to fields validation, you need to create two Request for each Model you created:\n\n\n/Modules/\nYourModuleName\n/Http/Requests/Create\nYourModelName\nRequest.php\n\n\n/Modules/\nYourModuleName\n/Http/Requests/Update\nYourModelName\nRequest.php\n\n\nAnd their code, for example \nBanco\n Entitie:\n\n\n?php namespace Modules\\Sistema\\Http\\Requests;\n\nuse Illuminate\\Foundation\\Http\\FormRequest;\nuse Modules\\Sistema\\Entities\\Banco;\n\nclass CreateBancoRequest extends FormRequest {\n\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return Banco::$rules;\n    }\n\n}\n\n\n\n\nThen you need edit the Controller class on \nstore\n and \nupdate\n functions.\n\n\n...\n/**\n     * Store a newly created resource in storage.\n     *\n     * @param  CreateBancoRequest $request\n     * @return Response\n     */\n    public function store(CreateBancoRequest $request)\n\n...\n\n/**\n     * Update the specified resource in storage.\n     *\n     * @param  Banco $banco\n     * @param  UpdateBancoRequest $request\n     * @return Response\n     */\n    public function update(Banco $banco, UpdateBancoRequest $request)",
+            "title": "Modules"
+        },
+        {
+            "location": "/modules/#modules",
+            "text": "",
+            "title": "Modules"
+        },
+        {
+            "location": "/modules/#create-new-module",
+            "text": "",
+            "title": "Create new module"
+        },
+        {
+            "location": "/modules/#scaffold",
+            "text": "$ php artisan asgard:module:scaffold  You will be asked the following questions:\n* What is the module name ?  This is in the following format  jjsoft-ar/yourmodulename  all lowercase. Do not use dashes in the module name   Do you wish to use Doctrine or Eloquent ?   This is to know what kind of Entities to generate. Use  Eloquent   Enter your desired entities   You can enter as many as you like, when you're done leave empty and the next question will come up.   Enter you desired value objects   Again, you can enter as many as you like, when you're done leave empty.  Before seeing the newly created module on the  admin dashboard  you will have to give you access to the new module. Go the the  User   Roles  view and edit the Admin role to give you permission to the new module.",
+            "title": "Scaffold"
+        },
+        {
+            "location": "/modules/#git",
+            "text": "The last step required is to add you module in the  Modules/.gitignore  file as following:  !YourModuleName  This will tell git to ignore everything in the Modules folder except for your modules.",
+            "title": "GIT"
+        },
+        {
+            "location": "/modules/#entities-models",
+            "text": "",
+            "title": "ENTITIES (MODELS)"
+        },
+        {
+            "location": "/modules/#create-migration",
+            "text": "$ php artisan module:make-migration  Model   YourModuleName   Going to  Modules/ :YourModuleName /Database/Migrations  and edit de migrations files",
+            "title": "Create Migration:"
+        },
+        {
+            "location": "/modules/#create-model-entitie",
+            "text": "$ php artisan module:make-model  Model   YourModuleName",
+            "title": "Create Model (Entitie):"
+        },
+        {
+            "location": "/modules/#secondary-db-definition",
+            "text": "To use secondary database on model open de model class  Modules/ YourModuleName /Entities/ NewEntitie .php , and add this:  class  NewEntitie  extends Model\n{\n    protected $connection = 'bs_siges';\n    public $timestamps = false;",
+            "title": "Secondary DB definition"
+        },
+        {
+            "location": "/modules/#fillable-definition",
+            "text": "Complete  $fillable  array with all fields that you want to fill on a form:    protected $fillable = [\n      ' field1 ',\n      ...\n      ' fieldN' \n  ];",
+            "title": "Fillable definition"
+        },
+        {
+            "location": "/modules/#validation-definition",
+            "text": "To are functionality of form validation add this array:    /**\n   * Validation rules\n   *\n   * @var array\n   */\n  public static $rules = [\n      'id_banco' =  'required',\n      'nombre' =  'required'\n  ];",
+            "title": "Validation definition"
+        },
+        {
+            "location": "/modules/#cast-definition",
+            "text": "You cast attributes in Eloquent by adding a protected  $casts  array to your model.    /**\n   * The attributes that should be casted to native types.\n   *\n   * @var array\n   */\n  protected $casts = [\n      'id_banco' =  'integer',\n      'nombre' =  'string',\n      'is_admin' =  'boolean',\n  ];",
+            "title": "Cast definition"
+        },
+        {
+            "location": "/modules/#controllers",
+            "text": "",
+            "title": "CONTROLLERS"
+        },
+        {
+            "location": "/modules/#create-controller",
+            "text": "If you need to create a controller without scaffold  $ php artisan module:make-controller  Model Controller  YourModuleName   If you use secundary database  bs_siges  then to work propietly you need edit   /Modules/Core/Repositories/Eloquent/EloquentBaseRepository.php  Search each occurrence of  - orderBy('created_at', 'DESC')  and delete, to work fine. Because this database doesn't work to timestamp.",
+            "title": "Create Controller:"
+        },
+        {
+            "location": "/modules/#create-request",
+            "text": "To add functionalytie at form to fields validation, you need to create two Request for each Model you created:  /Modules/ YourModuleName /Http/Requests/Create YourModelName Request.php  /Modules/ YourModuleName /Http/Requests/Update YourModelName Request.php  And their code, for example  Banco  Entitie:  ?php namespace Modules\\Sistema\\Http\\Requests;\n\nuse Illuminate\\Foundation\\Http\\FormRequest;\nuse Modules\\Sistema\\Entities\\Banco;\n\nclass CreateBancoRequest extends FormRequest {\n\n    /**\n     * Determine if the user is authorized to make this request.\n     *\n     * @return bool\n     */\n    public function authorize()\n    {\n        return true;\n    }\n\n    /**\n     * Get the validation rules that apply to the request.\n     *\n     * @return array\n     */\n    public function rules()\n    {\n        return Banco::$rules;\n    }\n\n}  Then you need edit the Controller class on  store  and  update  functions.  ...\n/**\n     * Store a newly created resource in storage.\n     *\n     * @param  CreateBancoRequest $request\n     * @return Response\n     */\n    public function store(CreateBancoRequest $request)\n\n...\n\n/**\n     * Update the specified resource in storage.\n     *\n     * @param  Banco $banco\n     * @param  UpdateBancoRequest $request\n     * @return Response\n     */\n    public function update(Banco $banco, UpdateBancoRequest $request)",
+            "title": "Create Request"
+        },
+        {
+            "location": "/license/",
+            "text": "The MIT License (MIT)\n\n\nCopyright (c) 2016 \n\n\n\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\n\nThe above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.\n\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.",
+            "title": "License"
+        },
+        {
+            "location": "/license/#the-mit-license-mit",
+            "text": "Copyright (c) 2016    Permission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in\nall copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\nTHE SOFTWARE.",
+            "title": "The MIT License (MIT)"
+        },
+        {
+            "location": "/changelog/",
+            "text": "Changelog\n\n\nAll Notable changes to \njjsoft-platform\n will be documented in this file",
+            "title": "Changelog"
+        },
+        {
+            "location": "/changelog/#changelog",
+            "text": "All Notable changes to  jjsoft-platform  will be documented in this file",
+            "title": "Changelog"
+        }
+    ]
+}

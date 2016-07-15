@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="JJSoft Team">
+  
+  <title>Modules - JJSoftPlatform</title>
+  
+
+  <link rel="shortcut icon" href="../img/favicon.ico">
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Modules";
+    var mkdocs_page_input_path = "modules.md";
+    var mkdocs_page_url = "/modules/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> JJSoftPlatform</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../install/">Install</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Modules</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#modules">Modules</a></li>
+                
+                    <li><a class="toctree-l4" href="#create-new-module">Create new module</a></li>
+                
+                    <li><a class="toctree-l4" href="#entities-models">ENTITIES (MODELS)</a></li>
+                
+                    <li><a class="toctree-l4" href="#controllers">CONTROLLERS</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../license/">License</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../changelog/">Changelog</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">JJSoftPlatform</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Modules</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        
+          <a href="https://github.com/jjsoft-ar" class="icon icon-github"> Edit on GitHub</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="modules">Modules</h1>
+<h2 id="create-new-module">Create new module</h2>
+<h3 id="scaffold">Scaffold</h3>
+<pre><code class="bash">$ php artisan asgard:module:scaffold
+</code></pre>
+
+<p>You will be asked the following questions:
+* What is the module name ?</p>
+<p>This is in the following format <code>jjsoft-ar/yourmodulename</code> all lowercase. Do not use dashes in the module name</p>
+<ul>
+<li>Do you wish to use Doctrine or Eloquent ?</li>
+</ul>
+<p>This is to know what kind of Entities to generate. Use <strong><code>Eloquent</code></strong></p>
+<ul>
+<li>Enter your desired entities</li>
+</ul>
+<p>You can enter as many as you like, when you're done leave empty and the next question will come up.</p>
+<ul>
+<li>Enter you desired value objects</li>
+</ul>
+<p>Again, you can enter as many as you like, when you're done leave empty.</p>
+<p>Before seeing the newly created module on the <strong><em>admin dashboard</em></strong> you will have to give you access to the new module. Go the the <strong>User &gt; Roles</strong> view and edit the Admin role to give you permission to the new module.</p>
+<h3 id="git">GIT</h3>
+<p>The last step required is to add you module in the <code>Modules/.gitignore</code> file as following:</p>
+<pre><code class="git">!YourModuleName
+</code></pre>
+
+<p>This will tell git to ignore everything in the Modules folder except for your modules.</p>
+<h2 id="entities-models">ENTITIES (MODELS)</h2>
+<h3 id="create-migration">Create Migration:</h3>
+<pre><code class="bash">$ php artisan module:make-migration &lt;Model&gt; &lt;YourModuleName&gt;
+</code></pre>
+
+<p>Going to <code>Modules/&lt;:YourModuleName&gt;/Database/Migrations</code> and edit de migrations files</p>
+<h3 id="create-model-entitie">Create Model (Entitie):</h3>
+<pre><code class="bash">$ php artisan module:make-model &lt;Model&gt; &lt;YourModuleName&gt;
+</code></pre>
+
+<h4 id="secondary-db-definition">Secondary DB definition</h4>
+<p>To use secondary database on model open de model class <code>Modules/&lt;YourModuleName&gt;/Entities/&lt;NewEntitie&gt;.php</code>, and add this:</p>
+<pre><code class="php">class &lt;NewEntitie&gt; extends Model
+{
+    protected $connection = 'bs_siges';
+    public $timestamps = false;
+</code></pre>
+
+<h4 id="fillable-definition">Fillable definition</h4>
+<p>Complete <code>$fillable</code> array with all fields that you want to fill on a form:</p>
+<pre><code class="php">  protected $fillable = [
+      '&lt;field1&gt;',
+      ...
+      '&lt;fieldN'&gt;
+  ];
+</code></pre>
+
+<h4 id="validation-definition">Validation definition</h4>
+<p>To are functionality of form validation add this array:</p>
+<pre><code class="php">  /**
+   * Validation rules
+   *
+   * @var array
+   */
+  public static $rules = [
+      'id_banco' =&gt; 'required',
+      'nombre' =&gt; 'required'
+  ];
+</code></pre>
+
+<h4 id="cast-definition">Cast definition</h4>
+<p>You cast attributes in Eloquent by adding a protected <code>$casts</code> array to your model.</p>
+<pre><code class="php">  /**
+   * The attributes that should be casted to native types.
+   *
+   * @var array
+   */
+  protected $casts = [
+      'id_banco' =&gt; 'integer',
+      'nombre' =&gt; 'string',
+      'is_admin' =&gt; 'boolean',
+  ];
+</code></pre>
+
+<h2 id="controllers">CONTROLLERS</h2>
+<h3 id="create-controller">Create Controller:</h3>
+<p>If you need to create a controller without scaffold</p>
+<pre><code class="bash">$ php artisan module:make-controller &lt;Model&gt;Controller &lt;YourModuleName&gt;
+</code></pre>
+
+<p>If you use secundary database <code>bs_siges</code> then to work propietly you need edit </p>
+<p><code>/Modules/Core/Repositories/Eloquent/EloquentBaseRepository.php</code></p>
+<p>Search each occurrence of <code>-&gt;orderBy('created_at', 'DESC')</code> and delete, to work fine. Because this database doesn't work to timestamp.</p>
+<h3 id="create-request">Create Request</h3>
+<p>To add functionalytie at form to fields validation, you need to create two Request for each Model you created:</p>
+<p><code>/Modules/&lt;YourModuleName&gt;/Http/Requests/Create&lt;YourModelName&gt;Request.php</code>
+<code>/Modules/&lt;YourModuleName&gt;/Http/Requests/Update&lt;YourModelName&gt;Request.php</code></p>
+<p>And their code, for example <code>Banco</code> Entitie:</p>
+<pre><code class="php">&lt;?php namespace Modules\Sistema\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+use Modules\Sistema\Entities\Banco;
+
+class CreateBancoRequest extends FormRequest {
+
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return Banco::$rules;
+    }
+
+}
+</code></pre>
+
+<p>Then you need edit the Controller class on <code>store</code> and <code>update</code> functions.</p>
+<pre><code class="php">...
+/**
+     * Store a newly created resource in storage.
+     *
+     * @param  CreateBancoRequest $request
+     * @return Response
+     */
+    public function store(CreateBancoRequest $request)
+
+...
+
+/**
+     * Update the specified resource in storage.
+     *
+     * @param  Banco $banco
+     * @param  UpdateBancoRequest $request
+     * @return Response
+     */
+    public function update(Banco $banco, UpdateBancoRequest $request)
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../license/" class="btn btn-neutral float-right" title="License">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../install/" class="btn btn-neutral" title="Install"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/jjsoft-ar" class="icon icon-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../install/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../license/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
